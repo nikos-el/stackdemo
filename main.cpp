@@ -10,7 +10,6 @@ class stack{
       for (int i=0; i<=top; i++) arr[i]=s.arr[i];
     }
     ~stack (){
-      top=-1;
       delete [] arr;
     }
     const stack & operator = (const stack &s){
