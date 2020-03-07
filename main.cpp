@@ -15,7 +15,7 @@ class stack{
     const stack & operator = (const stack &s){
       for (int i=0; i<=s.top; i++) arr[i]=s.arr[i];
       top=s.top;
-      return s;
+      return *this;
     }
 
     bool empty(){
