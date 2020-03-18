@@ -5,16 +5,19 @@ using namespace std;
 template <typename T>
 class stack{
   public:
-    stack (int size): top(-1), arr(new T [size]) {}
-    stack (const stack &s): top(s.top), arr(new T [sizeof(s.arr)/sizeof(T)]){
+    stack (int size): elements(size), top(-1), arr(new T [size]) {}
+    stack (const stack &s): elements(s.elements), top(s.top), arr(new T [s.elements]){
       for (int i=0; i<=top; i++) arr[i]=s.arr[i];
     }
     ~stack (){
       delete [] arr;
     }
     const stack & operator = (const stack &s){
-      for (int i=0; i<=s.top; i++) arr[i]=s.arr[i];
+      elements=s.elements;
       top=s.top;
+      delete [] arr;
+      arr=new T [elements];
+      for (int i=0; i<=top; i++) arr[i]=s.arr[i];
       return *this;
     }
 
@@ -42,7 +45,7 @@ class stack{
     }
 
   private:
-    int top;
+    int elements, top;
     T *arr;
 };
 
